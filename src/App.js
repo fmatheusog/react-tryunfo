@@ -99,7 +99,8 @@ class App extends Component {
     }, () => this.handleValidation());
   }
 
-  onSaveButtonClick = () => {
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
     const {
       cardName,
       cardDescription,
@@ -131,14 +132,31 @@ class App extends Component {
   }
 
   render() {
+    const { deck } = this.state;
     return (
-      <div className="card-preview">
-        <Form
-          { ...this.state }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card { ... this.state } />
+      <div className="app">
+        <div className="card-preview">
+          <Form
+            { ...this.state }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+          <Card { ...this.state } />
+        </div>
+        <div className="card-deck">
+          { deck.map((card) => (
+            <Card
+              key={ card.cardName }
+              cardName={ card.cardName }
+              cardImage={ card.cardImage }
+              cardDescription={ card.cardDescription }
+              cardAttr1={ card.cardAttr1 }
+              cardAttr2={ card.cardAttr2 }
+              cardAttr3={ card.cardAttr3 }
+              cardRare={ card.cardRare }
+              cardTrunfo={ card.cardTrunfo }
+            />)) }
+        </div>
       </div>
     );
   }
