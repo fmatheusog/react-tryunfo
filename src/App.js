@@ -19,10 +19,13 @@ class App extends Component {
       cardTrunfo: '',
       isSaveButtonDisabled: true,
       errors: 0,
+      deck: [],
     };
 
     this.onInputChange = this.onInputChange.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.handleValidation = this.handleValidation.bind(this);
+    this.clearForm = this.clearForm.bind(this);
   }
 
   handleValidation = () => {
@@ -46,7 +49,6 @@ class App extends Component {
     const totalAttrValidation = attrSum <= attrMaxLimit ? 0 : 1;
 
     const errors = inputValidation + attrValidation + totalAttrValidation;
-    console.log(errors);
 
     if (errors > 0) {
       this.setState({
@@ -59,6 +61,19 @@ class App extends Component {
     }
   }
 
+  clearForm= () => {
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'Normal',
+      cardTrunfo: '',
+    });
+  }
+
   onInputChange = (ev) => {
     const value = ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value;
 
@@ -67,12 +82,41 @@ class App extends Component {
     }, () => this.handleValidation());
   }
 
+  onSaveButtonClick = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+
+    const newCard = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+
+    this.setState((prevState) => ({
+      deck: [...prevState.deck, newCard],
+    }), () => this.clearForm());
+  }
+
   render() {
     return (
       <div className="card-preview">
         <Form
           { ...this.state }
           onInputChange={ this.onInputChange }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card { ... this.state } />
       </div>
