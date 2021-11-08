@@ -16,7 +16,8 @@ class App extends Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: 'Normal',
-      cardTrunfo: '',
+      cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       errors: 0,
       deck: [],
@@ -25,6 +26,7 @@ class App extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.handleValidation = this.handleValidation.bind(this);
+    this.handleHasTrunfo = this.handleHasTrunfo.bind(this);
     this.clearForm = this.clearForm.bind(this);
   }
 
@@ -65,13 +67,28 @@ class App extends Component {
     this.setState({
       cardName: '',
       cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: 'Normal',
-      cardTrunfo: '',
+      cardTrunfo: false,
     });
+  }
+
+  handleHasTrunfo = () => {
+    const { deck } = this.state;
+    const result = deck.some((card) => card.cardTrunfo === true);
+
+    if (result === true) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    } else {
+      this.setState({
+        hasTrunfo: false,
+      });
+    }
   }
 
   onInputChange = (ev) => {
@@ -107,7 +124,10 @@ class App extends Component {
 
     this.setState((prevState) => ({
       deck: [...prevState.deck, newCard],
-    }), () => this.clearForm());
+    }), () => {
+      this.clearForm();
+      this.handleHasTrunfo();
+    });
   }
 
   render() {
