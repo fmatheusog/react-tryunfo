@@ -135,13 +135,19 @@ class App extends Component {
     const { deck } = this.state;
     return (
       <div className="app">
-        <div className="card-preview">
-          <Form
-            { ...this.state }
-            onInputChange={ this.onInputChange }
-            onSaveButtonClick={ this.onSaveButtonClick }
-          />
-          <Card { ...this.state } />
+        <div className="registration-preview">
+          <div className="registration-form">
+            <h1>Adicionar nova carta</h1>
+            <Form
+              { ...this.state }
+              onInputChange={ this.onInputChange }
+              onSaveButtonClick={ this.onSaveButtonClick }
+            />
+          </div>
+          <div className="card-preview">
+            <h1>Card Preview</h1>
+            <Card { ...this.state } />
+          </div>
         </div>
         <div className="card-deck">
           { deck.map((card) => (

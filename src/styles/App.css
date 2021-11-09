@@ -1,4 +1,21 @@
-.card-preview {
+.registration-preview {
   display: flex;
 }
 
+.registration-form {
+  align-items: center;
+  background-color: lightgreen;
+  display: flex;
+  flex-direction: column;
+  margin: 50px 100px;
+  width: 50%;
+}
+
+.card-preview {
+  align-items: center;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  margin: 60px 60px;
+  width: 50%;
+}

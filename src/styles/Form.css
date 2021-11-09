@@ -4,7 +4,25 @@ form {
   width: 50%;
 }
 
+form input[type=text] {
+  width: 50%;
+}
+
+form input[type=number] {
+  width: 20%;
+}
+
+form textarea {
+  height: 50px;
+  width: 50%;
+}
+
+form select {
+  width: 30%;
+}
+
 label {
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }

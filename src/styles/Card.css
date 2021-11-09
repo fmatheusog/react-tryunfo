@@ -1,0 +1,18 @@
+.card {
+  align-items: center;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  justify-content: center;
+  width: 200px;
+}
+
+.card img {
+  width: 80px;
+}
+
+.card p {
+  line-height: 3px;
+}
