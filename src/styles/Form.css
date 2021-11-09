@@ -9,10 +9,6 @@ form button {
   width: 50px;
 }
 
-form input[type=number] {
-  width: 50px;
-}
-
 form textarea {
   height: 50px;
 }
