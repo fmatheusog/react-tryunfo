@@ -123,16 +123,17 @@ class Form extends Component {
             />
           </label>
         )}
-
-        <button
-          data-testid="save-button"
-          disabled={ isSaveButtonDisabled }
-          id="saveButton"
-          type="submit"
-          onClick={ onSaveButtonClick }
-        >
-          Salvar
-        </button>
+        <div className="save">
+          <button
+            data-testid="save-button"
+            disabled={ isSaveButtonDisabled }
+            id="saveButton"
+            type="submit"
+            onClick={ onSaveButtonClick }
+          >
+            Salvar
+          </button>
+        </div>
       </form>
     );
   }

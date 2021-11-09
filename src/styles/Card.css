@@ -1,4 +1,4 @@
-.card {
+.card-content {
   align-items: center;
   background-color: white;
   border: 1px solid black;
@@ -9,10 +9,10 @@
   width: 200px;
 }
 
-.card img {
+.card-content img {
   width: 80px;
 }
 
-.card p {
+.card-content p {
   line-height: 3px;
 }

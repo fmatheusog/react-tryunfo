@@ -17,7 +17,7 @@ class Card extends Component {
     } = this.props;
 
     return (
-      <div className="card">
+      <div className="card-content">
         <h3 data-testid="name-card">{ cardName }</h3>
         <img data-testid="image-card" src={ cardImage } alt={ cardName } />
         <p data-testid="description-card">
