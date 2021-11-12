@@ -1,6 +1,7 @@
 import { React, Component } from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Deck from './components/Deck';
 
 import './styles/App.css';
 
@@ -21,6 +22,8 @@ class App extends Component {
       isSaveButtonDisabled: true,
       errors: 0,
       deck: [],
+      searchResult: [],
+      searchByName: '',
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -143,7 +146,7 @@ class App extends Component {
   }
 
   render() {
-    const { deck } = this.state;
+    const { deck, searchByName } = this.state;
     return (
       <div className="app">
         <div className="registration-preview">
@@ -163,35 +166,22 @@ class App extends Component {
         <div className="card-deck">
           <aside className="filters">
             <h3>Filtro(s):</h3>
+            <input
+              type="text"
+              name="searchByName"
+              data-testid="name-filter"
+              id="searchByName"
+              placeholder="Pesquise cartas pelo nome"
+              onChange={ this.onInputChange }
+            />
           </aside>
           <div className="deck-content">
             <h1>Todas as cartas</h1>
-            <div className="cards">
-              { deck.map((card) => (
-                <div
-                  key={ card.cardName }
-                  className="card"
-                >
-                  <Card
-                    cardName={ card.cardName }
-                    cardImage={ card.cardImage }
-                    cardDescription={ card.cardDescription }
-                    cardAttr1={ card.cardAttr1 }
-                    cardAttr2={ card.cardAttr2 }
-                    cardAttr3={ card.cardAttr3 }
-                    cardRare={ card.cardRare }
-                    cardTrunfo={ card.cardTrunfo }
-                  />
-                  <button
-                    type="button"
-                    name={ card.cardName }
-                    data-testid="delete-button"
-                    onClick={ this.onDeleteButtonClick }
-                  >
-                    Excluir
-                  </button>
-                </div>)) }
-            </div>
+            <Deck
+              deck={ deck }
+              onDeleteButtonClick={ this.onDeleteButtonClick }
+              searchByName={ searchByName }
+            />
           </div>
         </div>
       </div>
