@@ -22,8 +22,8 @@ class App extends Component {
       isSaveButtonDisabled: true,
       errors: 0,
       deck: [],
-      searchResult: [],
       searchByName: '',
+      searchByRarity: 'todas',
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -146,7 +146,7 @@ class App extends Component {
   }
 
   render() {
-    const { deck, searchByName } = this.state;
+    const { deck, searchByName, searchByRarity } = this.state;
     return (
       <div className="app">
         <div className="registration-preview">
@@ -174,6 +174,17 @@ class App extends Component {
               placeholder="Pesquise cartas pelo nome"
               onChange={ this.onInputChange }
             />
+            <select
+              data-testid="rare-filter"
+              name="searchByRarity"
+              id="searchByRarity"
+              onChange={ this.onInputChange }
+            >
+              <option value="todas">Todas</option>
+              <option value="normal">Normal</option>
+              <option value="raro">Raro</option>
+              <option value="muito raro">Muito raro</option>
+            </select>
           </aside>
           <div className="deck-content">
             <h1>Todas as cartas</h1>
@@ -181,6 +192,7 @@ class App extends Component {
               deck={ deck }
               onDeleteButtonClick={ this.onDeleteButtonClick }
               searchByName={ searchByName }
+              searchByRarity={ searchByRarity }
             />
           </div>
         </div>
