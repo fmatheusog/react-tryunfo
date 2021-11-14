@@ -14,10 +14,10 @@ class Deck extends Component {
 
     let useDeck = searchByName !== '' ? deck
       .filter((card) => card.cardName.includes(searchByName)) : deck;
-    useDeck = searchByRarity !== 'todas' ? deck
-      .filter((card) => card.cardRare === searchByRarity) : deck;
+    useDeck = searchByRarity !== 'todas' ? useDeck
+      .filter((card) => card.cardRare === searchByRarity) : useDeck;
     useDeck = searchTrunfo === true ? deck
-      .filter((card) => card.cardTrunfo === true) : deck;
+      .filter((card) => card.cardTrunfo === true) : useDeck;
 
     return (
       <div className="cards">
