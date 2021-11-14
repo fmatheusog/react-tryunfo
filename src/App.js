@@ -24,6 +24,7 @@ class App extends Component {
       deck: [],
       searchByName: '',
       searchByRarity: 'todas',
+      searchTrunfo: false,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -146,7 +147,7 @@ class App extends Component {
   }
 
   render() {
-    const { deck, searchByName, searchByRarity } = this.state;
+    const { deck, searchByName, searchByRarity, searchTrunfo } = this.state;
     return (
       <div className="app">
         <div className="registration-preview">
@@ -165,7 +166,7 @@ class App extends Component {
         </div>
         <div className="card-deck">
           <aside className="filters">
-            <h3>Filtro(s):</h3>
+            <h3>Filtro(s) de busca:</h3>
             <input
               type="text"
               name="searchByName"
@@ -185,6 +186,13 @@ class App extends Component {
               <option value="raro">Raro</option>
               <option value="muito raro">Muito raro</option>
             </select>
+            <input
+              data-testid="trunfo-filter"
+              type="checkbox"
+              name="searchTrunfo"
+              id="searchTrunfo"
+              onChange={ this.onInputChange }
+            />
           </aside>
           <div className="deck-content">
             <h1>Todas as cartas</h1>
@@ -193,6 +201,7 @@ class App extends Component {
               onDeleteButtonClick={ this.onDeleteButtonClick }
               searchByName={ searchByName }
               searchByRarity={ searchByRarity }
+              searchTrunfo={ searchTrunfo }
             />
           </div>
         </div>

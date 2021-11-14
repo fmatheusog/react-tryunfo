@@ -8,6 +8,7 @@ class Deck extends Component {
       deck,
       searchByName,
       searchByRarity,
+      searchTrunfo,
       onDeleteButtonClick,
     } = this.props;
 
@@ -15,6 +16,8 @@ class Deck extends Component {
       .filter((card) => card.cardName.includes(searchByName)) : deck;
     useDeck = searchByRarity !== 'todas' ? deck
       .filter((card) => card.cardRare === searchByRarity) : deck;
+    useDeck = searchTrunfo === true ? deck
+      .filter((card) => card.cardTrunfo === true) : deck;
 
     return (
       <div className="cards">
@@ -51,6 +54,7 @@ Deck.propTypes = {
   deck: PropTypes.arrayOf(PropTypes.object).isRequired,
   searchByName: PropTypes.string.isRequired,
   searchByRarity: PropTypes.string.isRequired,
+  searchTrunfo: PropTypes.bool.isRequired,
   onDeleteButtonClick: PropTypes.func.isRequired,
 };
 
